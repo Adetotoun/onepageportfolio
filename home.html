@@ -5,11 +5,82 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portfolio</title>
     <link rel="stylesheet" href="home.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: Arial, sans-serif;
+        }
+        nav {
+            background: #333;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .nav-links {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            width: 100%;
+        }
+        .nav-links li {
+            margin: 0 10px;
+        }
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            padding: 8px 12px;
+        }
+        .nav-links a:hover {
+            background: #555;
+            border-radius: 5px;
+        }
+        .menu-toggle {
+            display: none;
+            cursor: pointer;
+            font-size: 24px;
+            color: white;
+            background: none;
+            border: none;
+            position: absolute;
+            left: 10px;
+        }
+        
+        @media (max-width: 768px) {
+            nav {
+                justify-content: space-between;
+            }
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 50px;
+                left: 0;
+                width: 100%;
+                background: #333;
+                text-align: center;
+            }
+            .nav-links.active {
+                display: flex;
+            }
+            .nav-links li {
+                margin: 10px 0;
+            }
+            .menu-toggle {
+                display: block;
+            }
+        }
+    </style>
 </head>
 <body>
     <header>
         <nav>
-            <ul>
+            <button class="menu-toggle">&#9776;</button>
+            <ul class="nav-links">
                 <li><a href="home.html">Home</a></li>
                 <li><a href="#about">About</a></li>
                 <li><a href="#education">Education</a></li>
@@ -19,6 +90,15 @@
                 <li><a href="#contact">Contact</a></li>
             </ul>
         </nav>
+    
+        <script>
+            const toggleButton = document.querySelector('.menu-toggle');
+            const navLinks = document.querySelector('.nav-links');
+            
+            toggleButton.addEventListener('click', () => {
+                navLinks.classList.toggle('active');
+            });
+        </script> 
     </header>
     
     <section id="about" class="container">
